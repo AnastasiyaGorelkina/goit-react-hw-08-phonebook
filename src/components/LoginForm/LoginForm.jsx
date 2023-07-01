@@ -1,5 +1,6 @@
 import { logIn } from "redux/auth/authAPI";
 import { useDispatch } from "react-redux";
+import { Section } from "components/App/App.styled";
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
@@ -15,7 +16,8 @@ export const LoginForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <Section>
+        <form onSubmit={handleSubmit} >
             <label>Email
                 <input type="email" name="email" />
             </label>
@@ -24,5 +26,6 @@ export const LoginForm = () => {
             </label>
             <button type="submit">Log In</button>
         </form>
+        </Section>
     );
 };

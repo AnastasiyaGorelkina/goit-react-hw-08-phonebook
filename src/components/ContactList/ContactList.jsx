@@ -4,12 +4,12 @@ import Notiflix from "notiflix";
 import { deleteContact } from "redux/contacts/contactsAPI";
 
 export const ContactList = () => {
+  const isLoading = useSelector(state => state.contacts.isLoading);
   const contacts = useSelector(state => state.contacts.items);
   const filterContact = useSelector(state => state.filters.filter);
-  const isLoading = useSelector(state => state.contacts.isLoading);
   const dispatch = useDispatch();
 
-  const deletContact = id => {
+  const delContact = id => {
     Notiflix.Notify.failure('Contact delet');
     dispatch(deleteContact(id));
   };
@@ -25,18 +25,17 @@ export const ContactList = () => {
   return (
     <>
       <Loading>{isLoading && <p>Loading...</p>}</Loading>
-    <List>
-      {visible.map(({ id, name, phone }) => {
-        return (
-          <Item key={id}>
-            {name}: {phone}
-            <Button type="button" onClick={() => deletContact(id)}>
-              Delete
-            </Button>
-          </Item>
-        );
-      })}
+
+      <List>
+        {visible.map(({ id, name, number }) => {
+          return (
+            <Item key={id}>
+              <p>{name}: {number}</p>
+              <Button type="button" onClick={() => delContact(id)}>Delete</Button>
+            </Item>
+          );
+        })}
       </List>
-      </>
+    </>
   );
 };

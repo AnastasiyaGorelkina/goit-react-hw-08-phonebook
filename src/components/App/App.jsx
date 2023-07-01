@@ -19,6 +19,7 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+
   return isRefreshing ? (<h3>Refreshing user...</h3>) : (
     <Routes>
       <Route path="/" element={<Layout />}>

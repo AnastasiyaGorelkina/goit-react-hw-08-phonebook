@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContact } from "redux/contacts/contactsAPI";
+import { fetchContacts } from "redux/contacts/contactsAPI";
 import { ContactForm } from "components/ContactsForm/ContactsForm";
 import { ContactList } from "components/ContactList/ContactList";
 import { Filter } from "components/Filter/Filter";
@@ -11,7 +11,7 @@ export default function Contacts() {
     const isLoading = useSelector(state => state.contacts.isLoading);
 
     useEffect(() => {
-        dispatch(fetchContact());
+        dispatch(fetchContacts());
     }, [dispatch]);
     
     return (
