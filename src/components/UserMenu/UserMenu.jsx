@@ -1,5 +1,8 @@
 import { logOut } from "redux/auth/authAPI";
 import { useDispatch, useSelector } from "react-redux";
+import { MenuBox } from "./UserMenu.styled";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from "components/ContactList/ContactList.styled";
 
 export const UserMenu = () => {
     const name = useSelector(state => state.auth.user.email);
@@ -10,9 +13,9 @@ export const UserMenu = () => {
     };
 
     return (
-        <div>
+        <MenuBox>
             <p>{name}</p>
-            <button onClick={handleLogOut}>Exit</button>
-        </div>
+            <Button onClick={handleLogOut}><LogoutIcon sx={{ fontSize: 25 }}/></Button>
+        </MenuBox>
     );
 };
